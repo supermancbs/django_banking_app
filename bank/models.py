@@ -14,4 +14,13 @@ class Withdrawl(models.Model):
     amount = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-    
+class Deposit(models.Model):
+    user = models.ForeignKey(User, related_name='deposits')
+    amount = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Transaction(models.Model):
+    sender = models.ForeignKey(User, related_name='sent_money')
+    reciever = models.ForeignKey(User, related_name='recieved_money')
+    amount = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)

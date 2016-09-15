@@ -6,4 +6,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('name', 'amount', 'withdrawls')
+        fields = ('name', 'amount', 'withdrawls', 'deposits', 'recieved_money', 'sent_money')

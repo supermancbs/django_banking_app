@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 class WithdrawalSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Withdrawl
+        model = Withdrawal
         fields = ('amount', 'created_at')
 
 class DepositSerializer(serializers.ModelSerializer):

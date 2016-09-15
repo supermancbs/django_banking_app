@@ -17,8 +17,9 @@ class TransactionSerializer(serializers.ModelSerializer):
         fields = ('amount', 'created_at')
 
 class UserSerializer(serializers.ModelSerializer):
-    tracks = serializers.StringRelatedField(many=True)
-
+    withdrawals = WithdrawalSerializer(many=True, read_only=True)
+    deposits = DepositSerializer(many=True, read_only=True)
+    transactions = TransactionSerializer(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ('name', 'amount', 'withdrawls', 'deposits', 'recieved_money', 'sent_money')
+        fields = ('name', 'balance', 'withdrawals', 'deposits', 'transactions')

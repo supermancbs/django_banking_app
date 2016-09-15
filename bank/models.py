@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
-
 from django.db import models
+
 
 # Create your models here.
 class User(models.Model):
@@ -9,8 +9,8 @@ class User(models.Model):
     phone_number = models.CharField(max_length=12)
     balance = models.IntegerField()
 
-class Withdrawl(models.Model):
-    user = models.ForeignKey(User, related_name='withdrawls')
+class Withdrawal(models.Model):
+    user = models.ForeignKey(User, related_name='withdrawals')
     amount = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 

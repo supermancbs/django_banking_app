@@ -1,7 +1,7 @@
-from django.contrib.auth.models import User, Withdrawl, Deposit, Transaction
+from bank.models import User, Withdrawal, Deposit, Transaction
 from rest_framework import serializers
 
-class WithdrawlSerializer(serializers.ModelSerializer):
+class WithdrawalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Withdrawl
         fields = ('amount', 'created_at')

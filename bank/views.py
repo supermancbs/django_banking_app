@@ -1,7 +1,7 @@
 from bank.models import User, Withdrawal, Deposit, Transaction
 from rest_framework import viewsets
 from bank.serializers import UserSerializer, WithdrawalSerializer, DepositSerializer, TransactionSerializer
-import pdb; pdb.set_trace()
+from django.http import JsonResponse
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -9,6 +9,12 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('name')
     serializer_class = UserSerializer
+
+def create(request):
+    user = User.objects.create(name=request['name'], phone_number=request[phone_number], address=request[address], balance=request[balance])
+    return JsonResponse(user)
+
+
 
 
 class WithdrawalViewSet(viewsets.ModelViewSet):

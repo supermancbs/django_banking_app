@@ -8,6 +8,7 @@ class User(models.Model):
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=12)
     balance = models.IntegerField()
+
     def lower_balance(amount):
         self.balance-=amount
         self.save

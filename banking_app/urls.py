@@ -23,8 +23,7 @@ router.register(r'withdrawals', views.WithdrawalViewSet)
 router.register(r'deposits', views.DepositViewSet)
 router.register(r'transactions', views.TransactionViewSet)
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
+
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

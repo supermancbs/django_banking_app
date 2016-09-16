@@ -8,11 +8,16 @@ class User(models.Model):
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=12)
     balance = models.IntegerField()
+    def lower_money(amount):
+        self.balance-=amount
+        self.save
 
 class Withdrawal(models.Model):
     user = models.ForeignKey(User, related_name='withdrawals')
     amount = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    user_lower = User.objects.get(user)
+    user.lower_money(amount)
 
 class Deposit(models.Model):
     user = models.ForeignKey(User, related_name='deposits')

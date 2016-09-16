@@ -1,26 +1,33 @@
-from django.contrib.auth.models import User, Group
+from bank.models import User, Withdrawal, Deposit, Transaction
 from rest_framework import viewsets
-from tutorial.quickstart.serializers import UserSerializer,WithdrawalSerializer, DepositSerializer, TransactionSerializer
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-
+from bank.serializers import UserSerializer, WithdrawalSerializer, DepositSerializer, TransactionSerializer
+import pdb; pdb.set_trace()
 
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = User.objects.all().order_by('name')
     serializer_class = UserSerializer
 
-class UserViewSet(viewsets.ModelViewSet):
+
+class WithdrawalViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+    queryset = Withdrawal.objects.all().order_by('created_at')
+    serializer_class = WithdrawalSerializer
+
+class DepositViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Deposit.objects.all().order_by('created_at')
+    serializer_class = DepositSerializer
+
+class TransactionViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Transaction.objects.all().order_by('created_at')
+    serializer_class = TransactionSerializer
